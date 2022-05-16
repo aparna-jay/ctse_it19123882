@@ -26,21 +26,19 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/ctse_it19123882:${{ github.sha }}
-    # - name: checkout
-    #   uses: actions/checkout@master
-    # - name: context
-    #   uses: okteto/context@latest
-    #   with:
-    #     token: ${{ secrets.OKTETO_TOKEN }}
-    # - name: "Activate Namespace"
-    #   uses: okteto/namespace@latest
-    #   with:
-    #     name: aparna-jay
-    # - name: "Trigger the pipeline"
-    #   uses: okteto/pipeline@latest
-    #   with:
-    #     name: ${{ github.event.pull_request.title }}
-    #     timeout: 8m
-      - name: Deploy kubernates
-        - run: okteto build -t it19123882/ctse_it19123882:fe08ea3a99fa951e0993c28b05deca1e2d1f8a99
-        - run: kubectl apply -f k8s
+    - name: checkout
+      uses: actions/checkout@master
+    - name: context
+      uses: okteto/context@latest
+      with:
+        token: ${{ secrets.OKTETO_TOKEN }}
+    - name: "Activate Namespace"
+      uses: okteto/namespace@latest
+      with:
+        name: aparna-jay
+    - name: "Trigger the pipeline"
+      uses: okteto/pipeline@latest
+      with:
+        name: pr-${{ github.event.number }}
+        timeout: 8m
+
