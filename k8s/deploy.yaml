@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ctse3
+  name: order-service
 spec:
   selector:
     matchLabels:
-      app: ctse3
+      app: order-service
   replicas: 1
   template:
     metadata:
       labels:
-        app: ctse3
+        app: order-service
     spec:
       containers:
-      - name: ctse3
+      - name: order-service
         image: it19123882/ctse_it19123882:5c3404f2b7c216a5379f3d838f33a516bc0dd930
         ports:
         - containerPort: 3000
