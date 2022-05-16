@@ -3,14 +3,14 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: ctse3
-  name: ctse3
+    app: order-service
+  name: order-service
 spec:
   ports:
   - port: 3000
     protocol: TCP
     targetPort: 3000
   selector:
-    app: ctse3
+    app: order-service
 status:
   loadBalancer: {}
