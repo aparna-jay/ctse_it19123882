@@ -1,19 +1,28 @@
-on: 
+on:
   push:
     branches: [ master ]
+
+name: Okteto deploy
+
 jobs:
-  build:
+  devflow:
     runs-on: ubuntu-latest
     steps:
-    - uses: okteto/context@latest
+    - name: checkout
+      uses: actions/checkout@master
+
+    - name: context
+      uses: okteto/context@latest
       with:
         token: ${{ secrets.OKTETO_TOKEN }}
+
     - name: "Activate Namespace"
       uses: okteto/namespace@latest
       with:
         name: aparna-jay
-   - name: "Trigger the pipeline"
-     uses: okteto/pipeline@latest
-     with:
-       name: pr-${{ github.event.number }}
-       timeout: 8m
+
+    - name: "Trigger the pipeline"
+      uses: okteto/pipeline@latest
+      with:
+        name: pr-${{ github.event.number }}
+        timeout: 8m
