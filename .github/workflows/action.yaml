@@ -41,6 +41,6 @@ jobs:
     #   with:
     #     name: ${{ github.event.pull_request.title }}
     #     timeout: 8m
-    - deploy:
+      - name: Deploy kubernates
         - run: okteto build -t it19123882/ctse_it19123882:fe08ea3a99fa951e0993c28b05deca1e2d1f8a99
         - run: kubectl apply -f k8s
