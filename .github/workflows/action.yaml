@@ -39,6 +39,6 @@ jobs:
     - name: "Trigger the pipeline"
       uses: okteto/pipeline@latest
       with:
-        name: pr-${{ github.event.number }}
+        name: $(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
         timeout: 8m
 
