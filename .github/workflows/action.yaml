@@ -39,6 +39,6 @@ jobs:
     - name: "Trigger the pipeline"
       uses: okteto/pipeline@latest
       with:
-        name: ${{ github.event.pull_request.number }}
+        name: push to master
         timeout: 8m
 
