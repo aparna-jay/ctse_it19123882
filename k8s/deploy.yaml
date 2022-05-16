@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: order-service
-        image: it19123882/ctse_it19123882:latest
+        image: it19123882/ctse_it19123882:5c3404f2b7c216a5379f3d838f33a516bc0dd930l
         ports:
         - containerPort: 3000
