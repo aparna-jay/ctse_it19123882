@@ -36,9 +36,12 @@ jobs:
       uses: okteto/namespace@latest
       with:
         name: aparna-jay
-    - name: "Trigger the pipeline"
-      uses: okteto/pipeline@latest
-      with:
-        name: push to master
-        timeout: 8m
+    # - name: "Trigger the pipeline"
+    #   uses: okteto/pipeline@latest
+    #   with:
+    #     name: push to master
+    #     timeout: 8m
+    - name: print push event
+        with:
+          name: pr-${{ github.event.number }}
 
