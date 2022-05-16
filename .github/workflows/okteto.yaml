@@ -1,8 +1,9 @@
 on:
-  push:
-    branches: [ master ]
+  pull_request:
+    branches:
+      - master
 
-name: Okteto deploy
+name: example
 
 jobs:
   devflow:
@@ -24,5 +25,6 @@ jobs:
     - name: "Trigger the pipeline"
       uses: okteto/pipeline@latest
       with:
-        name: ""
+        name: pr-${{ github.event.number }}
         timeout: 8m
+        skipIfExists: true
