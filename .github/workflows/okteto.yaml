@@ -1,9 +1,7 @@
 on: [push]
-
 name: example
-
 jobs:
-  devflow:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: okteto/context@latest
