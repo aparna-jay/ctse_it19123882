@@ -26,9 +26,3 @@ jobs:
         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
       with:
         args: get pods
-    - name: Get Kubeconfig
-      uses: okteto/actions/namespace@v1
-        id: namespace
-        with:
-          token: ${{ secrets.OKTETO_TOKEN }}
-          namespace: actions-rberrelleza
