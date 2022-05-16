@@ -1,6 +1,9 @@
 name: Docker Build Deploy
 
 on:
+  pull_request:
+    branches:
+      - master
   push:
     branches: [ master ]
 
@@ -26,20 +29,20 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/ctse_it19123882:${{ github.sha }}
-    # - name: checkout
-    #   uses: actions/checkout@master
-    # - name: context
-    #   uses: okteto/context@latest
-    #   with:
-    #     token: ${{ secrets.OKTETO_TOKEN }}
-    # - name: "Activate Namespace"
-    #   uses: okteto/namespace@latest
-    #   with:
-    #     name: aparna-jay
-    # - name: "Trigger the pipeline"
-    #   uses: okteto/pipeline@latest
-    #   with:
-    #     name: ${{ github.event.head_commit.message }}
-    #     timeout: 8m
+    - name: checkout
+      uses: actions/checkout@master
+    - name: context
+      uses: okteto/context@latest
+      with:
+        token: ${{ secrets.OKTETO_TOKEN }}
+    - name: "Activate Namespace"
+      uses: okteto/namespace@latest
+      with:
+        name: aparna-jay
+    - name: "Trigger the pipeline"
+      uses: okteto/pipeline@latest
+      with:
+        name: pr-${{ github.event.number }}
+        timeout: 8m
    
 
